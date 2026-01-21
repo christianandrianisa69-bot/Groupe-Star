@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe STAR | Excellence Industrielle à Madagascar</title>
+    <style>
+        /* --- VARIABLES ET RÉINITIALISATION --- */
+        :root {
+            --rouge-star: #d32f2f;
+            --jaune-thb: #ffc107;
+            --noir-fond: #1a1a1a;
+            --gris-clair: #f4f4f4;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial Black', Gadget, sans-serif; /* Police épaisse pour le texte clipping */
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER & NAVBAR --- */
+        header {
+            background: var(--noir-fond);
+            color: white;
+            padding: 15px 0;
+            border-bottom: var(--rouge-star) 5px solid;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Animation du logo dans le header (photo 1 et 2) */
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-wrapper-nav {
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-wrapper-nav img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            animation: swapLogoNav 6s infinite ease-in-out;
+        }
+
+        .logo-wrapper-nav img:nth-child(2) {
+            animation-delay: 3s;
+            opacity: 0;
+        }
+
+        @keyframes swapLogoNav {
+            0%, 100% { opacity: 1; }
+            45%, 55% { opacity: 0; }
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: white;
+        }
+
+        .logo span { color: var(--jaune-thb); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--jaune-thb); }
+
+        /* --- SECTION HERO (TEXT CLIPPING) --- */
+        .hero {
+            min-height: 75vh;
+            background: var(--noir-fond);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-logo-main {
+            width: 200px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.8));
+            animation: slideUp 1.5s ease-out;
+        }
+
+        /* Effet de texte avec images 1, 2, 3, 4 */
+        .leader-text {
+            font-size: clamp(2.5rem, 12vw, 7.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0;
+            line-height: 0.9;
+            background-size: cover;
+            background-position: center;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: moveImagesHero 12s infinite ease-in-out;
+        }
+
+        @keyframes moveImagesHero {
+            0%, 20% { background-image: url('sary/photo (1).jpg'); }
+            25%, 45% { background-image: url('sary/photo (2).jpg'); }
+            50%, 70% { background-image: url('sary/photo (3).jpg'); }
+            75%, 95% { background-image: url('sary/photo (4).jpg'); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--jaune-thb);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 20px;
+            letter-spacing: 5px;
+        }
+
+        /* --- SECTION HISTOIRE --- */
+        .about { padding: 80px 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        .about-grid {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-text { flex: 3; }
+        .about-img { 
+            flex: 2;
+            background: var(--rouge-star);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            box-shadow: 12px 12px 0px var(--jaune-thb);
+            color: white;
+            font-weight: bold;
+            font-size: 1.4rem;
+            text-align: center;
+            padding: 25px;
+        }
+
+        h2.section-title {
+            font-size: 2.2rem;
+            border-left: 10px solid var(--rouge-star);
+            padding-left: 20px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* --- STATISTIQUES --- */
+        .stats { background: var(--gris-clair); padding: 60px 0; }
+        .stats-flex {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .stat-item h3 {
+            font-size: 3rem;
+            color: var(--rouge-star);
+            margin: 0;
+        }
+
+        /* --- MISSION --- */
+        .mission { padding: 80px 0; }
+        .mission-box {
+            background: var(--noir-fond);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 25px;
+            text-align: center;
+            border-bottom: 8px solid var(--jaune-thb);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .mission-box h2 {
+            color: var(--jaune-thb);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .btn-star {
+            display: inline-block;
+            background: var(--rouge-star);
+            color: white;
+            padding: 14px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+        }
+        .btn-star:hover {
+            background: var(--jaune-thb);
+            color: var(--noir-fond);
+            transform: translateY(-3px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #111;
+            color: #888;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 15px; }
+            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .about-grid { flex-direction: column; text-align: center; }
+            .about-img { width: 100%; min-height: 200px; margin-top: 30px; }
+            h2.section-title { font-size: 1.8rem; text-align: center; border-left: none; border-bottom: 5px solid var(--rouge-star); padding-left: 0; }
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container navbar">
+            <div class="logo-box">
+                <div class="logo-wrapper-nav">
+                    <img src="sary/photo (1).jpg" alt="Logo 1">
+                    <img src="sary/photo (2).jpg" alt="Logo 2">
+                </div>
+                <div class="logo">
+                    <h1>Groupe <span>Star</span></h1>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="livraison.html">Livraison</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="membre.html">Membre</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <img src="sary/photo (1).jpg" alt="Logo STAR" class="hero-logo-main">
+            
+            <h1 class="leader-text">LEADER INDUSTRIEL</h1>
+            
+            <p>À MADAGASCAR</p>
+        </div>
+    </section>
+
+    <section class="about container">
+        <h2 class="section-title">Notre Histoire</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>Depuis sa création à <strong>Antsirabe</strong> en 1953, le Groupe STAR est devenu le pilier incontournable de la production de boissons à Madagascar. Notre force réside dans l'alliance parfaite entre technologies de pointe et savoir-faire local.</p>
+                <p>En tant qu'acteur majeur de l'économie nationale, nous nous engageons chaque jour à fournir des produits d'excellence respectant les standards internationaux les plus rigoureux, pour le plaisir de tous les Malgaches.</p>
+            </div>
+            <div class="about-img">
+                Fierté et Excellence <br> Industrielle
+            </div>
+        </div>
+    </section>
+
+    <div class="stats">
+        <div class="container stats-flex">
+            <div class="stat-item">
+                <h3>1953</h3>
+                <p>Année de fondation</p>
+            </div>
+            <div class="stat-item">
+                <h3>6</h3>
+                <p>Sites de production</p>
+            </div>
+            <div class="stat-item">
+                <h3>2000+</h3>
+                <p>Collaborateurs</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="mission container">
+        <div class="mission-box">
+            <h2>Notre Mission</h2>
+            <p>Produire et distribuer avec passion les boissons préférées des Malgaches, tout en étant un modèle de responsabilité sociale et environnementale à travers toute la Grande Île.</p>
+            <a href="menu.html" class="btn-star">Voir le Menu</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Groupe STAR Madagascar - Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
