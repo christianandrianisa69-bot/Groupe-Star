@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eaux Minérales | STAR Madagascar</title>
+    <style>
+        :root {
+            --bleu-star: #007bff;
+            --bleu-fonce: #0056b3;
+            --noir-fond: #1a1a1a;
+            --jaune-star: #ffc107;
+            --blanc: #ffffff;
+            --gris-fond: #f4f9ff;
+            --rouge-energie: #e31e24;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: var(--gris-fond);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--blanc);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--bleu-star);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo-star { width: 120px; max-width: 100%; height: auto; }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 15px;
+            flex-grow: 1;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .category-header h1 {
+            font-size: clamp(1.5rem, 6vw, 2.2rem);
+            text-transform: uppercase;
+            font-weight: 900;
+            color: var(--bleu-fonce);
+            margin: 0;
+        }
+
+        .underline {
+            width: 60px;
+            height: 4px;
+            background-color: var(--bleu-star);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        /* --- PRODUCT GRID (RESPONSIVE) --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            justify-items: center;
+        }
+
+        .product-card {
+            background: var(--blanc);
+            border-radius: 25px;
+            padding: 30px 20px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e1f0ff;
+            transition: transform 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .product-card:hover { transform: translateY(-8px); }
+
+        .img-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 280px;
+            margin-bottom: 20px;
+        }
+
+        .img-bottle { 
+            height: 100%; 
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1)); 
+        }
+
+        .product-name {
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+
+        .size-tag {
+            font-size: 1rem;
+            color: #666;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* --- PRICE SECTION --- */
+        .price-section {
+            border-top: 2px solid #f0f8ff;
+            padding-top: 15px;
+            margin-top: auto;
+        }
+
+        .p-label {
+            font-size: 0.7rem;
+            color: #888;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .p-value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #28a745;
+        }
+
+        .p-value span { font-size: 0.9rem; margin-left: 3px; }
+
+        /* --- ACTION AREA (BUTTON) --- */
+        .action-area {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .btn-energie {
+            display: inline-block;
+            background-color: var(--noir-fond);
+            color: var(--blanc);
+            padding: 16px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: 2px solid var(--noir-fond);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-energie span { color: var(--rouge-energie); }
+
+        .btn-energie:hover {
+            background-color: var(--blanc);
+            color: var(--noir-fond);
+            transform: scale(1.05);
+        }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 480px) {
+            .container { margin: 20px auto; }
+            .img-container { height: 220px; }
+            .product-name { font-size: 1.4rem; }
+            .btn-energie { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img src="sary/photo (1).jpg" alt="STAR" class="logo-star">
+</header>
+
+<div class="container">
+    <div class="category-header">
+        <h1>Grand Format</h1>
+        <div class="underline"></div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="img-container">
+                <img src="sary/unnamed(9).jpg" class="img-bottle" alt="Eau Vive 1.5L">
+            </div>
+            <div class="product-name" style="color: #0056b3;">Eau Vive</div>
+            <div class="size-tag">Bouteille 1,5 Litre</div>
+            <div class="price-section">
+                <span class="p-label">PRIX CONSEILLÉ</span>
+                <span class="p-value">2 200<span>Ar</span></span>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="img-container">
+                <img src="sary/unnamed (12).png" class="img-bottle" alt="Cristalline 1L">
+            </div>
+            <div class="product-name" style="color: #d32f2f;">Cristalline</div>
+            <div class="size-tag">Bouteille 1 Litre</div>
+            <div class="price-section">
+                <span class="p-label">PRIX CONSEILLÉ</span>
+                <span class="p-value">1 500<span>Ar</span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-area">
+        <a href="energie.html" class="btn-energie">
+            Voir < energy drinks</span> ⚡
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

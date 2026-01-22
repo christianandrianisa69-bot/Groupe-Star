@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Énergie Drinks | STAR Madagascar</title>
+    <style>
+        :root {
+            --rouge-star: #e31e24;
+            --noir-fond: #121212;
+            --noir-card: #1e1e1e;
+            --jaune-star: #ffc107;
+            --blanc: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--noir-fond);
+            color: #eee;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: #000;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--rouge-star);
+        }
+
+        .logo-star { 
+            width: 120px; 
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .category-header h1 {
+            font-size: clamp(1.8rem, 8vw, 2.5rem);
+            text-transform: uppercase;
+            font-weight: 900;
+            color: var(--blanc);
+            margin: 0;
+        }
+
+        .underline {
+            width: 80px;
+            height: 5px;
+            background-color: var(--rouge-star);
+            margin: 10px auto;
+        }
+
+        /* --- PRODUCT GRID RESPONSIVE --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .product-card {
+            background: var(--noir-card);
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover { 
+            transform: translateY(-8px);
+            border-color: var(--rouge-star);
+        }
+
+        .img-container {
+            height: 220px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-single { 
+            max-height: 100%; 
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 15px rgba(227, 30, 36, 0.2)); 
+        }
+
+        .product-name {
+            font-size: 1.6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 10px 0;
+        }
+
+        .xxl-text { color: var(--rouge-star); }
+        .youzou-text { color: #ccff00; }
+
+        .price-section {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            margin-top: auto;
+        }
+
+        .p-label { font-size: 0.8rem; color: #777; font-weight: bold; display: block; margin-bottom: 5px; }
+        .p-value { font-size: 2rem; font-weight: 900; color: var(--blanc); }
+        .p-value span { font-size: 1rem; margin-left: 3px; color: var(--rouge-star); }
+
+        /* --- ACTION AREA (BUTTON) --- */
+        .action-area {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .btn-biere {
+            display: inline-block;
+            background-color: var(--jaune-star);
+            color: #000;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 193, 7, 0.3);
+            border: 2px solid var(--jaune-star);
+        }
+
+        .btn-biere:hover {
+            background-color: transparent;
+            color: var(--jaune-star);
+            transform: scale(1.05);
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 480px) {
+            .product-grid { grid-template-columns: 1fr; }
+            .img-container { height: 180px; }
+            .btn-biere { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img src="sary/photo (1).jpg" alt="STAR" class="logo-star">
+</header>
+
+<div class="container">
+    <div class="category-header">
+        <h1>Énergie Drinks</h1>
+        <div class="underline"></div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="img-container">
+                <img src="sary/unnamed (2).jpg" class="img-single" alt="XXL 33cl">
+            </div>
+            <div class="product-name xxl-text">XXL Energy</div>
+            <div class="price-section">
+                <span class="p-label">BOUTEILLE (33cl)</span>
+                <span class="p-value">2 500<span>Ar</span></span>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="img-container">
+                <img src="sary/unnamed (3).jpg" class="img-single" alt="YouZou 25cl">
+            </div>
+            <div class="product-name youzou-text">YouZou Energy</div>
+            <div class="price-section">
+                <span class="p-label">BOUTEILLE (25cl)</span>
+                <span class="p-value">1 800<span>Ar</span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-area">
+        <a href="Menu.html" class="btn-biere">
+            Voir le Menu                         
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

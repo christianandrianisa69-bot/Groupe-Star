@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOCUS SUR L'ESSENTIEL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --accent-color: #f1c40f; 
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --star-gold: #f1c40f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden; /* Tsy mivoaka ny pejy */
+            color: white;
+        }
+
+        /* --- ARRIÈRE-PLAN --- */
+        .bg-slider {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+        }
+
+        .bg-img {
+            position: absolute;
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: bgFade 12s infinite ease-in-out;
+        }
+        .bg-img:nth-child(1) { background-image: url('sary/photo (11).png'); }
+        .bg-img:nth-child(2) { background-image: url('sary/photo (12).jpg'); animation-delay: 4s; }
+
+        @keyframes bgFade {
+            0%, 45% { opacity: 0.6; }
+            55%, 100% { opacity: 0; }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: -1;
+        }
+
+        /* --- EN-TÊTE --- */
+        .main-header {
+            text-align: center;
+            margin-top: 40px;
+            z-index: 10;
+        }
+        .main-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.2rem, 5vw, 2.5rem);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+        }
+
+        /* --- SLIDER SYSTEM (Ireo Card mandalo) --- */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            height: 450px; /* Haavon'ny card */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+        }
+
+        .card {
+            position: absolute;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            width: 300px;
+            border-radius: 30px;
+            padding: 40px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: cardSlide 15s infinite ease-in-out;
+        }
+
+        /* Animation fampifandimbiasana ny card 3 */
+        /* Samy manana 5 segondra (15s total / 3) */
+        .card:nth-child(1) { animation-delay: 0s; }
+        .card:nth-child(2) { animation-delay: 5s; }
+        .card:nth-child(3) { animation-delay: 10s; }
+
+        @keyframes cardSlide {
+            0% { opacity: 0; transform: translateY(20px) scale(0.8); }
+            5%, 30% { opacity: 1; transform: translateY(0) scale(1); }
+            35%, 100% { opacity: 0; transform: translateY(-20px) scale(0.8); }
+        }
+
+        /* --- STYLING AO ANATY CARD --- */
+        .photo-circle {
+            width: 140px; height: 140px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid #fff;
+            outline: 2px solid var(--accent-color);
+            outline-offset: 4px;
+        }
+        .photo-circle img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0; left: 0;
+            opacity: 0;
+            animation: photoFade 4s infinite ease-in-out;
+        }
+        .photo-circle img:nth-child(2) { animation-delay: 2s; }
+
+        @keyframes photoFade {
+            0%, 45% { opacity: 1; }
+            55%, 100% { opacity: 0; }
+        }
+
+        .content h2 { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; margin-bottom: 10px; }
+        .info-box { background: rgba(0, 0, 0, 0.5); border-radius: 15px; padding: 12px; margin-bottom: 15px; }
+        .info-box p { font-size: 0.8rem; color: #ddd; margin: 3px 0; }
+        .info-box b { color: var(--accent-color); }
+        .section-tag { background: var(--accent-color); color: #000; padding: 5px 20px; border-radius: 50px; font-weight: 800; font-size: 0.7rem; display: inline-block; }
+
+        /* --- FOOTER --- */
+        .footer-theme {
+            width: 100%;
+            background: #000;
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+            border-top: 3px solid var(--star-gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        .footer-theme span { color: var(--star-gold); }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-slider">
+        <div class="bg-img"></div>
+        <div class="bg-img"></div>
+    </div>
+    <div class="overlay"></div>
+
+    <header class="main-header">
+        <h1>FOCUS SUR L'ESSENTIEL</h1>
+    </header>
+
+    <div class="slider-container">
+        
+        <div class="card">
+            <div class="photo-circle">
+                <img src="sary/photo(8).jpg" alt="Photo 1">
+                <img src="sary/photo (5).jpg" alt="Photo 2">
+            </div>
+            <div class="content">
+                <h2>RAMAMONJY</h2>
+                <div class="info-box">
+                    <p><b>Prénom :</b> Mihira Ny Valimbavaka</p>
+                    <p><b>Numéro :</b> 43</p>
+                </div>
+                <div class="section-tag">SECTION A</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="photo-circle">
+                <img src="sary/photo(7).jpg" alt="Photo 1">
+                <img src="sary/photo (6).jpg" alt="Photo 2">
+            </div>
+            <div class="content">
+                <h2>ANDRIANISA</h2>
+                <div class="info-box">
+                    <p><b>Prénom :</b> Tolojanahary Christian</p>
+                    <p><b>Numéro :</b> 04</p>
+                </div>
+                <div class="section-tag">SECTION A</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="photo-circle">
+                <img src="sary/photo(9).jpg" alt="Photo 1">
+                <img src="sary/photo (10).jpg" alt="Photo 2">
+            </div>
+            <div class="content">
+                <h2>RAHARIMAMONJY</h2>
+                <div class="info-box">
+                    <p><b>Prénom :</b> Tiavina Fenosoa</p>
+                    <p><b>Numéro :</b>28</p>
+                </div>
+                <div class="section-tag">SECTION A</div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer-theme">
+        THÈME : <span>BRASSERIE STAR</span> ⭐ ⭐
+    </footer>
+
+</body>
+</html>

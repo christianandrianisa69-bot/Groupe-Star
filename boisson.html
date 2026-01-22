@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boissons 30cl | STAR Madagascar</title>
+    <style>
+        :root {
+            --jaune-star: #ffc107;
+            --noir-fond: #1a1a1a;
+            --rouge-star: #d32f2f;
+            --bleu-eau: #007bff;
+            --blanc: #ffffff;
+            --gris-clair: #f4f4f4;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: var(--gris-clair);
+        }
+
+        header {
+            background-color: var(--noir-fond);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--jaune-star);
+        }
+
+        .logo-star { 
+            width: 100px; 
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .category-title {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            font-weight: 900;
+            margin-bottom: 30px;
+            color: var(--noir-fond);
+            border-bottom: 3px solid var(--jaune-star);
+            display: inline-block;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+        /* --- GRID RESPONSIVE --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: var(--blanc);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .img-container {
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .img-pm { 
+            max-height: 100%; 
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 8px rgba(0,0,0,0.15)); 
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 10px 0;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .price-section {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        .p-label { font-size: 0.75rem; color: #888; font-weight: bold; }
+        .p-val { font-size: 1.4rem; font-weight: bold; color: var(--rouge-star); margin-top: 5px; }
+
+        .grenadine { color: #d32f2f; }
+        .orange { color: #ff8c00; }
+        .ananas { color: #fbc02d; }
+        .cola { color: #1a1a1a; }
+
+        /* --- ACTION AREA (BOUTON UNIQUE) --- */
+        .action-area {
+            display: flex;
+            justify-content: center;
+            margin: 50px 0;
+        }
+
+        .btn-eau {
+            display: inline-block;
+            padding: 16px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-align: center;
+            min-width: 280px;
+            background-color: var(--bleu-eau);
+            color: var(--blanc);
+            border: 2px solid var(--bleu-eau);
+            box-shadow: 0 6px 15px rgba(0,123,255,0.3);
+        }
+
+        .btn-eau:hover {
+            transform: scale(1.05);
+            background-color: var(--blanc);
+            color: var(--bleu-eau);
+        }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 480px) {
+            .product-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+            .btn-eau { width: 100%; min-width: auto; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img src="sary/photo (1).jpg" alt="STAR" class="logo-star">
+</header>
+
+<div class="container">
+
+    <h1 class="category-title">Nos Boissons - Format 30cl</h1>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+            <div class="img-container">
+                <img src="sary/unnamed (5).jpg" class="img-pm" alt="Caprice Grenadine">
+            </div>
+            <div class="product-name grenadine">Caprice Grenadine</div>
+            <div class="price-section">
+                <div class="p-label">BOUTEILLE 30cl</div>
+                <div class="p-val">1 500 Ar</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="img-container">
+                <img src="sary/unnamed (7).jpg" class="img-pm" alt="Caprice Orange">
+            </div>
+            <div class="product-name orange">Caprice Orange</div>
+            <div class="price-section">
+                <div class="p-label">BOUTEILLE 30cl</div>
+                <div class="p-val">1 500 Ar</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="img-container">
+                <img src="sary/unnamed (6).jpg" class="img-pm" alt="Caprice Ananas">
+            </div>
+            <div class="product-name ananas">Caprice Ananas</div>
+            <div class="price-section">
+                <div class="p-label">BOUTEILLE 30cl</div>
+                <div class="p-val">1 500 Ar</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="img-container">
+                <img src="sary/unnamed (8).jpg" class="img-pm" alt="World Cola">
+            </div>
+            <div class="product-name cola">World Cola</div>
+            <div class="price-section">
+                <div class="p-label">BOUTEILLE 30cl</div>
+                <div class="p-val">1 400 Ar</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="action-area">
+        <a href="eau.html" class="btn-eau">
+            Voir eaux minérales 💧
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

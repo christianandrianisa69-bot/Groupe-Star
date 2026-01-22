@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Bières | STAR Madagascar</title>
+    <style>
+        :root {
+            --jaune-star: #ffc107;
+            --noir-fond: #1a1a1a;
+            --rouge-star: #d32f2f;
+            --blanc: #ffffff;
+            --gris-clair: #f8f9fa;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--gris-clair);
+            color: var(--noir-fond);
+        }
+
+        /* --- HEADER RESPONSIVE --- */
+        header {
+            background-color: var(--noir-fond);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--jaune-star);
+        }
+
+        .logo-star { 
+            width: 120px; 
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .category-header h1 {
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            text-transform: uppercase;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .underline {
+            width: 60px;
+            height: 4px;
+            background-color: var(--jaune-star);
+            margin: 10px auto;
+        }
+
+        /* --- PRODUCT GRID RESPONSIVE --- */
+        .product-grid {
+            display: grid;
+            /* Auto-fit: mametraka vokatra araka ny fahalalàn'ny efijery */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: var(--blanc);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+
+        .img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 220px;
+            margin-bottom: 20px;
+        }
+
+        .img-single { 
+            height: 100%; 
+            max-width: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); 
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .price-section {
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .p-label {
+            display: block;
+            font-size: 0.75rem;
+            color: #888;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .p-value {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--rouge-star);
+        }
+
+        .p-value span { font-size: 0.8rem; margin-left: 2px; }
+
+        /* Couleurs spécifiques */
+        .beaufort-color { color: #004d26; }
+        .thb-color { color: #d32f2f; }
+        .castel-color { color: #b8860b; }
+
+        /* --- BOUTON VOIR BOISSONS GAZEUSES --- */
+        .action-area {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .btn-gazeuse {
+            display: inline-block;
+            background-color: var(--noir-fond);
+            color: var(--jaune-star);
+            padding: 15px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            border: 2px solid var(--noir-fond);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-gazeuse:hover {
+            background-color: var(--blanc);
+            color: var(--noir-fond);
+            transform: scale(1.05);
+        }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 480px) {
+            .container { margin: 20px auto; }
+            .product-card { padding: 20px; }
+            .img-container { height: 180px; }
+            .btn-gazeuse { width: 100%; box-sizing: border-box; }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <img src="sary/photo (1).jpg" alt="STAR" class="logo-star">
+</header>
+
+<div class="container">
+    <div class="category-header">
+        <h1>Nos Bières - Grand Format</h1>
+        <div class="underline"></div>
+    </div>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <div class="img-container">
+                <img src="sary/unnamed (10).jpg" class="img-single" alt="Beaufort 50cl">
+            </div>
+            <div class="product-name beaufort-color">Beaufort Lager</div>
+            <div class="price-section">
+                <span class="p-label">BOUTEILLE 50cl</span>
+                <span class="p-value">4 000<span>Ar</span></span>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="img-container">
+                <img src="sary/unnamed (11).jpg" class="img-single" alt="THB 65cl">
+            </div>
+            <div class="product-name thb-color">THB Pilsener</div>
+            <div class="price-section">
+                <span class="p-label">BOUTEILLE 65cl</span>
+                <span class="p-value">3 800<span>Ar</span></span>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="img-container">
+                <img src="sary/unnamed (13).jpg" class="img-single" alt="Castel 65cl">
+            </div>
+            <div class="product-name castel-color">Castel Beer</div>
+            <div class="price-section">
+                <span class="p-label">BOUTEILLE 65cl</span>
+                <span class="p-value">4 200<span>Ar</span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="action-area">
+        <a href="boisson.html" class="btn-gazeuse ">Voir boissons gazeuses 🥤 </a>
+        
+    </div>
+</div>
+
+</body>
+</html>
