@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe STAR | Accueil</title>
+    <style>
+        :root { --rouge: #e30613; --vert: #007a33; --jaune: #ffc107; --noir: #1a1a1a; --blanc: #fff; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: sans-serif; background: #f4f4f4; color: var(--noir); line-height: 1.4; }
+        
+        /* Slideshow */
+        .hero { position: relative; width: 100%; height: 350px; overflow: hidden; background: var(--noir); }
+        .slides { display: flex; width: 300%; height: 100%; animation: slide 12s infinite ease-in-out; }
+        .slide { width: 100%; height: 100%; background-size: cover; background-position: center; filter: brightness(0.6); }
+        .s1 { background-image: url('unnamed (14).jpg'); }
+        .s2 { background-image: url('unnamed(12).jpg'); }
+        .s3 { background-image: url('unnamed (15).jpg'); }
+        @keyframes slide { 0%, 25% { transform: translateX(0); } 33%, 58% { transform: translateX(-33.33%); } 66%, 91% { transform: translateX(-66.66%); } }
+        
+        .hero h1 { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: var(--blanc); font-size: 3rem; border-bottom: 4px solid var(--jaune); }
+
+        .container { max-width: 1000px; margin: auto; padding: 30px 15px; text-align: center; }
+        .intro h2 { color: var(--vert); margin-bottom: 10px; }
+        
+        /* Grid Flex - Nouveaux thèmes */
+        .grid { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin: 20px 0; }
+        .card { flex: 1 1 280px; background: var(--blanc); padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-top: 4px solid var(--rouge); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card h3 { font-size: 1.2rem; color: var(--vert); margin-bottom: 10px; text-transform: uppercase; }
+
+        .mission { background: var(--noir); color: var(--blanc); padding: 40px 20px; border-radius: 20px; margin-top: 30px; }
+        .btn { display: inline-block; margin-top: 15px; padding: 12px 30px; background: var(--rouge); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; }
+
+        footer { padding: 20px; font-size: 0.8rem; color: #777; text-align: center; }
+        @media (max-width: 600px) { .hero { height: 250px; } .hero h1 { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="slides"><div class="slide s1"></div><div class="slide s2"></div><div class="slide s3"></div></div>
+        <h1>ACCUEIL</h1>
+    </section>
+
+    <main class="container">
+        <section class="intro">
+            <h2>Notre Histoire</h2>
+            <p>Leader de l'agroalimentaire à Madagascar depuis 1953, le Groupe STAR accompagne le quotidien des Malgaches avec excellence.</p>
+        </section>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Logistique</h3>
+                <p>Un réseau de distribution performant couvrant l'intégralité de la Grande Île.</p>
+            </div>
+            <div class="card">
+                <h3>Engagement RSE</h3>
+                <p>Des actions concrètes pour l'éducation, la santé et l'environnement à Madagascar.</p>
+            </div>
+            <div class="card">
+                <h3>Qualité</h3>
+                <p>Une rigueur industrielle aux normes internationales pour la sécurité de nos consommateurs.</p>
+            </div>
+        </div>
+
+        <section class="mission">
+            <h2 style="color:var(--jaune)">Notre Mission</h2>
+            <p>Produire et distribuer avec passion les boissons préférées des Malgaches.</p>
+            <a href="menu.html" class="btn">VOIR MENU</a>
+        </section>
+    </main>
+
+    <footer>&copy; 2026 Groupe STAR Madagascar</footer>
+</body>
+</html>
