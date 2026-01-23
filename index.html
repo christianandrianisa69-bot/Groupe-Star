@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe STAR | Leader Industriel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --rouge-star: #d32f2f;
+            --jaune-thb: #ffc107;
+            --noir-fond: #1a1a1a;
+            --blanc: #ffffff;
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body {
+            font-family: 'Arial Black', sans-serif;
+            background-color: var(--noir-fond);
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* --- HEADER & NAVBAR --- */
+        header {
+            width: 100%;
+            padding: 15px 25px;
+            border-bottom: 4px solid var(--rouge-star);
+            background: var(--noir-fond);
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-unique {
+            width: 45px;
+            height: 45px;
+            border: 2px solid var(--jaune-thb);
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            animation: changeSary 9s infinite ease-in-out;
+        }
+
+        .logo-text {
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        /* --- MENU DROPDOWN --- */
+        .menu-container { position: relative; }
+        #menu-check { display: none; }
+
+        .menu-wrapper {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .base-icon {
+            width: 28px;
+            height: 28px;
+            border: 2px solid var(--jaune-thb);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .dots-menu {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .dots-menu span {
+            width: 6px;
+            height: 6px;
+            background-color: var(--jaune-thb);
+            border-radius: 50%;
+        }
+
+        .menu-wrapper:hover .dots-menu { opacity: 1; }
+        .menu-wrapper:hover .base-icon { opacity: 0; }
+
+        .dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: 55px;
+            background: var(--blanc);
+            border-radius: 10px;
+            min-width: 220px;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            list-style: none;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 15px 20px;
+            color: var(--noir-fond);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px solid #f0f0f0;
+            transition: 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f8f8f8;
+            color: var(--rouge-star);
+            padding-left: 30px;
+        }
+
+        #menu-check:checked ~ .dropdown-menu { display: block; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 15vw, 10rem); 
+            line-height: 0.85;
+            font-weight: 900;
+            text-transform: uppercase;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: cover;
+            background-position: center;
+            animation: changeSary 12s infinite ease-in-out;
+        }
+
+        @keyframes changeSary {
+            0%, 30% { background-image: url('photo (1).jpg'); }
+            33%, 63% { background-image: url('photo (2).jpg'); }
+            66%, 100% { background-image: url('photo (3).jpg'); }
+        }
+
+        .subtitle {
+            letter-spacing: clamp(4px, 2vw, 12px);
+            color: var(--jaune-thb);
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin-top: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* --- RESPONSIVE FIX --- */
+        @media (max-width: 768px) {
+            body { overflow-y: auto; }
+            .hero h1 { line-height: 0.9; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo-section">
+                <div class="logo-unique"></div>
+                <div class="logo-text">Groupe <span style="color:var(--jaune-thb)">Star</span></div>
+            </div>
+
+            <div class="menu-container">
+                <input type="checkbox" id="menu-check">
+                <label for="menu-check" class="menu-wrapper">
+                    <div class="base-icon"></div>
+                    <div class="dots-menu">
+                        <span></span><span></span><span></span>
+                    </div>
+                </label>
+                
+                <ul class="dropdown-menu">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="produits.html"><i class="fas fa-beer"></i> Nos Produits</a></li>
+                    <li><a href="livraison.html"><i class="fas fa-truck"></i> Livraison</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="espace-membre.html"><i class="fas fa-user"></i> Espace Membre</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <h1>
+            <span>Leader</span><br>
+            <span>Industriel</span>
+        </h1>
+        <div class="subtitle">À Madagascar</div>
+    </main>
+
+</body>
+</html>
