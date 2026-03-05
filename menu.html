@@ -3,284 +3,268 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STAR | Catalogue des Boissons</title>
+    <title>STAR | Catalogue Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --noir-fond: #1a1a1a;
+            --noir-fond: #0f0f0f;
             --jaune-star: #ffc107;
-            --rouge-star: #d32f2f;
+            --rouge-star: #e63946;
             --blanc: #ffffff;
-            --gris-clair: #f4f4f4;
+            --gris-fond: #f8f9fa;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         body {
             margin: 0;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f9f9f9;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--gris-fond);
             color: #333;
+            overflow-x: hidden;
         }
 
         /* --- HEADER --- */
         header {
-            background-color: var(--noir-fond);
-            padding: 0 20px;
-            height: 60px;
+            background-color: rgba(15, 15, 15, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 0 40px;
+            height: 75px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             border-bottom: 3px solid var(--jaune-star);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        .dropdown {
-            position: relative;
-            display: inline-block;
+        .logo-placeholder {
+            color: var(--jaune-star);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
         }
 
+        /* --- DROPDOWN MENU --- */
         .dropbtn {
-            background: none;
+            background: var(--jaune-star);
             border: none;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: bold;
+            color: var(--noir-fond);
+            padding: 12px 25px;
+            font-weight: 700;
             cursor: pointer;
-            padding: 20px 0;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: var(--transition);
         }
 
-        .dropbtn span { color: var(--jaune-star); margin-left: 5px; }
+        .dropbtn:hover {
+            background: var(--blanc);
+            transform: translateY(-2px);
+        }
+
+        .dropdown { position: relative; }
 
         .dropdown-content {
             display: none;
             position: absolute;
+            right: 0;
             background-color: var(--blanc);
             min-width: 220px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            z-index: 10;
-            border-radius: 0 0 8px 8px;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .dropdown-content a {
             color: var(--noir-fond);
-            padding: 12px 16px;
+            padding: 15px 20px;
             text-decoration: none;
             display: block;
-            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            transition: 0.3s;
+            border-bottom: 1px solid #eee;
         }
 
         .dropdown-content a:hover {
-            background-color: #f1f1f1;
+            background-color: var(--gris-fond);
             color: var(--rouge-star);
+            padding-left: 30px;
         }
 
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
+        .dropdown:hover .dropdown-content { display: block; }
 
-        /* --- HERO BANNER --- */
+        /* --- HERO BANNER (Slideshow) --- */
         .hero-banner {
             width: 100%;
-            height: 350px;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
+            height: 500px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
             text-align: center;
-        }
-
-        .hero-banner h1 {
-            font-size: 2.8rem;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .hero-banner p {
-            font-size: 1.2rem;
-            color: var(--jaune-star);
-            font-weight: 500;
-        }
-
-        /* --- MENU GRID --- */
-        .menu-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
-            padding: 40px 15px;
-            margin-top: -60px; 
-        }
-
-        .category-card {
-            background: var(--blanc);
-            width: 260px;
-            border-radius: 15px;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            text-align: center;
-            transition: 0.3s ease;
+            background-color: #000;
         }
 
-        .category-card:hover {
-            transform: translateY(-10px);
+        .slideshow {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 1;
         }
 
-        .card-image {
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
+        .slideshow img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            filter: brightness(45%);
+            animation: slideFade 12s infinite ease-in-out;
         }
 
-        .biere .card-image { background-color: #fff3e0; }
-        .gazeuse .card-image { background-color: #ffebee; }
-        .eaux .card-image { background-color: #e3f2fd; }
-        .energie .card-image { background-color: #f3e5f5; }
+        /* Animation timings */
+        .slideshow img:nth-child(1) { animation-delay: 0s; }
+        .slideshow img:nth-child(2) { animation-delay: 4s; }
+        .slideshow img:nth-child(3) { animation-delay: 8s; }
 
-        .card-info {
-            padding: 20px;
+        @keyframes slideFade {
+            0%, 100% { opacity: 0; }
+            10%, 33% { opacity: 1; }
+            43% { opacity: 0; }
         }
 
-        .card-info h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.25rem;
-            color: var(--noir-fond);
-            text-transform: uppercase;
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
-        .card-info p {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-            height: 40px;
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.8rem;
+            margin: 0;
+            font-weight: 800;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        /* --- SECTION LIVRAISON (Nampiana) --- */
+        .hero-content p {
+            font-size: 1.5rem;
+            color: var(--jaune-star);
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        /* --- DELIVERY SECTION --- */
         .delivery-cta {
-            background-color: var(--gris-clair);
-            padding: 60px 20px;
+            background: var(--noir-fond);
+            color: white;
+            padding: 100px 20px;
             text-align: center;
-            margin-top: 40px;
-            border-top: 1px solid #ddd;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+            margin-top: -50px;
         }
 
-        .delivery-container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        .delivery-container { max-width: 800px; margin: 0 auto; }
 
-        .delivery-cta h2 {
-            font-size: 1.8rem;
-            color: var(--noir-fond);
+        .delivery-container h2 { 
+            font-size: 2.5rem; 
+            color: var(--jaune-star); 
             margin-bottom: 15px;
-        }
-
-        .delivery-cta p {
-            color: #555;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
         }
 
         .btn-livraison {
             display: inline-block;
-            background-color: var(--rouge-star);
+            background: var(--rouge-star);
             color: white;
-            padding: 16px 40px;
+            padding: 18px 45px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             border-radius: 50px;
-            text-transform: uppercase;
-            font-size: 1rem;
-            transition: 0.3s ease;
-            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            margin-top: 30px;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(230, 57, 70, 0.4);
         }
 
         .btn-livraison:hover {
-            background-color: var(--noir-fond);
-            color: var(--jaune-star);
+            background: var(--jaune-star);
+            color: var(--noir-fond);
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
         }
 
+        /* --- FOOTER --- */
         footer {
-            background-color: var(--noir-fond);
+            background-color: #050505;
             color: #888;
-            padding: 30px;
+            padding: 50px 20px;
             text-align: center;
             font-size: 0.9rem;
+            border-top: 1px solid #222;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-banner { height: 400px; }
+            header { padding: 0 20px; }
+            .logo-placeholder { font-size: 1.5rem; }
+            .delivery-cta { padding: 80px 20px; }
         }
     </style>
 </head>
-
 <body>
 
     <header>
+        <div class="logo-placeholder">STAR.</div>
         <div class="dropdown">
-            <button class="dropbtn">MENU <span>▼</span></button>
+            <button class="dropbtn">Explorer le Menu ▾</button>
             <div class="dropdown-content">
-                <a href="biere.html">BIÈRES</a>
-                <a href="boisson.html">BOISSONS GAZEUSES</a>
-                <a href="eau.html">EAUX MINÉRALES</a>
-                <a href="energie.html">ENERGIE DRINKS</a>
+                <a href="biere.html">🍺 Bières de Prestige</a>
+                <a href="boisson.html">🥤 Soft Drinks</a>
+                <a href="eau.html">💧 Eaux Minérales</a>
+                <a href="energie.html">⚡ Energy Drinks</a>
             </div>
         </div>
     </header>
 
     <section class="hero-banner">
-        <h1>NOTRE CATALOGUE</h1>
-        <p>Fraîcheur et Qualité STAR à votre portée</p>
+        <div class="slideshow">
+            <img src="photo (10).jpg" alt="Catalogue Star 1">
+            <img src="photo(7).jpg" alt="Catalogue Star 2">
+            <img src="photo(8).png" alt="Catalogue Star 3">
+        </div>
+
+        <div class="hero-content">
+            <h1>NOTRE CATALOGUE</h1>
+            <p>L'excellence brassicole malgache</p>
+        </div>
     </section>
-
-    <main class="menu-grid">
-        <div class="category-card biere">
-            <div class="card-image">🍺</div>
-            <div class="card-info">
-                <h2>Bières</h2>
-                <p>THB Pils, Castel, Skol, Gold...</p>
-            </div>
-        </div>
-
-        <div class="category-card gazeuse">
-            <div class="card-image">🥤</div>
-            <div class="card-info">
-                <h2>Boissons Gazeuses</h2>
-                <p>Coca-Cola, Fanta, BonBon Anglais...</p>
-            </div>
-        </div>
-
-        <div class="category-card eaux">
-            <div class="card-image">💧</div>
-            <div class="card-info">
-                <h2>Eaux</h2>
-                <p>Eau Vive, Crystal, Saint-Georges...</p>
-            </div>
-        </div>
-
-        <div class="category-card energie">
-            <div class="card-image">⚡</div>
-            <div class="card-info">
-                <h2>Energisants</h2>
-                <p>World Cola Energy, Reaktor...</p>
-            </div>
-        </div>
-    </main>
 
     <section class="delivery-cta">
         <div class="delivery-container">
-            <h2>Envie de fraîcheur à domicile ?</h2>
-            <p>Faites-vous livrer rapidement toutes nos boissons où que vous soyez.</p>
-            <a href="livraison.html" class="btn-livraison">Voir Livraison 🚚</a>
+            <h2>Besoin de fraîcheur ?</h2>
+            <p>Commandez maintenant et recevez vos boissons préférées en un temps record directement chez vous.</p>
+            <a href="livraison.html" class="btn-livraison">Commander maintenant 🚚</a>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 Groupe STAR Madagascar - Tous droits réservés.
+        &copy; 2026 GROUPE STAR MADAGASCAR | Excellence & Tradition.
+        <br>
+        <small style="margin-top: 10px; display: block;">L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</small>
     </footer>
 
 </body>

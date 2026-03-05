@@ -30,7 +30,6 @@
             overflow: hidden;
         }
 
-        /* --- HEADER & NAVBAR --- */
         header {
             width: 100%;
             padding: 15px 25px;
@@ -54,14 +53,15 @@
             gap: 15px;
         }
 
+        /* LOGO: Mbola boribory tsara fa nesorina ilay border mavo */
         .logo-unique {
             width: 45px;
             height: 45px;
-            border: 2px solid var(--jaune-thb);
-            border-radius: 50%;
+            border-radius: 50%; /* Ity no mitazona azy ho boribory */
             background-size: cover;
             background-position: center;
             animation: changeSary 9s infinite ease-in-out;
+            border: none; /* Esorina ilay ligne mavo manodidina */
         }
 
         .logo-text {
@@ -70,7 +70,6 @@
             text-transform: uppercase;
         }
 
-        /* --- MENU DROPDOWN --- */
         .menu-container { position: relative; }
         #menu-check { display: none; }
 
@@ -83,21 +82,18 @@
             cursor: pointer;
         }
 
+        /* MENU: Nesorina tanteraka ilay boribory */
         .base-icon {
-            width: 28px;
-            height: 28px;
-            border: 2px solid var(--jaune-thb);
-            border-radius: 50%;
-            transition: 0.3s;
+            display: none; 
         }
 
+        /* Ireo teboka 3 sisa no avela */
         .dots-menu {
-            position: absolute;
+            position: relative;
             display: flex;
             flex-direction: column;
             gap: 4px;
-            opacity: 0;
-            transition: 0.3s;
+            opacity: 1; /* Hita foana */
         }
 
         .dots-menu span {
@@ -106,9 +102,6 @@
             background-color: var(--jaune-thb);
             border-radius: 50%;
         }
-
-        .menu-wrapper:hover .dots-menu { opacity: 1; }
-        .menu-wrapper:hover .base-icon { opacity: 0; }
 
         .dropdown-menu {
             position: absolute;
@@ -142,7 +135,6 @@
 
         #menu-check:checked ~ .dropdown-menu { display: block; }
 
-        /* --- HERO SECTION --- */
         .hero {
             flex: 1;
             display: flex;
@@ -181,7 +173,6 @@
             text-transform: uppercase;
         }
 
-        /* --- RESPONSIVE FIX --- */
         @media (max-width: 768px) {
             body { overflow-y: auto; }
             .hero h1 { line-height: 0.9; }
@@ -226,4 +217,4 @@
     </main>
 
 </body>
-</html>
+</html>    

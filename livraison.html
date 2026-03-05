@@ -7,7 +7,7 @@
     <style>
         :root {
             --jaune-thb: #ffc107;
-            --bleu-caprice: #0091ff;
+            --bleu-star: #0091ff;
             --noir-fond: #1a1a1a;
             --blanc: #ffffff;
             --gris-clair: #f4f7f6;
@@ -16,7 +16,7 @@
 
         body {
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background-color: var(--gris-clair);
             display: flex;
             flex-direction: column;
@@ -26,12 +26,9 @@
         header {
             background: var(--noir-fond);
             color: white;
-            padding: 25px;
+            padding: 20px;
             border-bottom: var(--jaune-thb) 5px solid;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
         }
 
         .main-content {
@@ -39,270 +36,197 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
         .form-container {
             background: var(--blanc);
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
             width: 100%;
-            max-width: 600px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
+            max-width: 550px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-sizing: border-box;
         }
 
         .step-title {
             color: var(--noir-fond);
             border-bottom: 2px solid #eee;
-            margin: 30px 0 20px 0;
-            padding-bottom: 8px;
+            margin: 20px 0 15px 0;
+            padding-bottom: 5px;
             font-weight: 800;
-            display: flex;
-            align-items: center;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
         }
 
-        .step-title::before {
-            content: "";
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background: var(--bleu-caprice);
-            margin-right: 10px;
-            border-radius: 50%;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        label { 
-            font-weight: 600; 
-            margin-bottom: 8px; 
-            color: #555;
-            font-size: 0.9rem;
-        }
-        
         input, textarea { 
             padding: 14px; 
-            border: 1px solid #e0e0e0; 
-            border-radius: 8px; 
+            border: 1px solid #ddd; 
+            border-radius: 10px; 
             font-size: 1rem;
             background: #fafafa;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+        }
+
+        /* --- CALCULATRICE --- */
+        .resume-container {
+            background: #fffdf5;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px dashed var(--jaune-thb);
+            margin-bottom: 15px;
+        }
+
+        .total-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--jaune-thb);
+            border-radius: 8px;
+            font-weight: bold;
+            color: var(--rouge-star);
+            text-align: right;
+        }
+
+        /* --- MODE PAIEMENT RESPONSIVE --- */
+        .payment-methods {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .payment-methods input[type="radio"] {
+            display: none;
+        }
+
+        .method-button {
+            flex: 1;
+            padding: 15px 5px;
+            background: #fff;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
             transition: 0.3s;
         }
 
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--bleu-caprice);
-            background: #fff;
-            box-shadow: 0 0 0 4px rgba(0, 145, 255, 0.1);
+        .payment-methods input[type="radio"]:checked + .method-button {
+            background-color: #e3f2fd;
+            border-color: var(--bleu-star);
+            color: var(--bleu-star);
         }
 
-        .resume-container {
-            background: #fffdf5;
-            padding: 25px;
-            border-radius: 12px;
-            margin: 25px 0;
-            border: 2px dashed var(--jaune-thb);
-        }
-
-        .flex-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .input-total {
-            width: 150px;
-            padding: 10px;
-            text-align: right;
-            border: 2px solid var(--jaune-thb);
-            font-weight: bold;
-            color: var(--rouge-star);
-            font-size: 1.1rem;
-            border-radius: 8px;
-        }
-
-        .payment-methods {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .method-card {
-            flex: 1 1 calc(50% - 12px);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px;
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .method-card:hover {
-            border-color: var(--bleu-caprice);
-            background: #f0f7ff;
-        }
-
-        .mvola { border-top: 4px solid #00c853; }
-        .orange { border-top: 4px solid #ff6600; }
-        .airtel { border-top: 4px solid #e11010; }
-        .carte { border-top: 4px solid #00457c; }
-
+        /* --- ANIMATION "ENVOYÉ AVEC SUCCÈS" --- */
         .btn-envoyer {
             background: var(--noir-fond);
             color: var(--jaune-thb);
             width: 100%;
-            padding: 20px;
-            font-size: 1rem;
+            padding: 18px;
             font-weight: bold;
             border: none;
             border-radius: 12px;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
-            margin-top: 10px;
         }
 
-        .btn-envoyer:hover {
-            background: #000;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        }
-
-        /* --- STYLE CONTACT CTA --- */
-        .contact-cta {
+        #success-message {
+            display: none;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 20px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-weight: bold;
+            border: 1px solid #c8e6c9;
         }
 
+        /* Rehefa tsindrina ny bokotra vao miseho ilay animation */
+        .btn-envoyer:active + #success-message {
+            display: block;
+            animation: showThenFade 15s forwards;
+        }
+
+        @keyframes showThenFade {
+            0% { transform: scale(0.5); opacity: 0; }
+            5% { transform: scale(1.1); opacity: 1; } /* Miseho be ilay soratra */
+            10% { transform: scale(1); } /* Mihantona eo */
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); display: none; } /* Miala tsimoramora */
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 480px) {
+            .payment-methods { flex-direction: column; }
+            .form-container { padding: 20px; }
+        }
+
+        .contact-cta { margin: 20px 0; text-align: center; }
         .btn-contact {
             display: inline-block;
-            background: transparent;
-            color: var(--noir-fond);
-            padding: 12px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
+            padding: 10px 20px;
             border: 2px solid var(--noir-fond);
-            transition: 0.3s;
-            font-size: 0.85rem;
-            text-transform: uppercase;
+            color: var(--noir-fond);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.8rem;
         }
 
-        .btn-contact:hover {
-            background: var(--noir-fond);
-            color: var(--jaune-thb);
-            transform: translateY(-2px);
-        }
-
-        footer {
-            background: #fff;
-            color: #888;
-            padding: 30px;
-            text-align: center;
-            font-size: 0.85rem;
-            border-top: 1px solid #eee;
-        }
-
-        @media (max-width: 480px) {
-            .method-card { flex: 1 1 100%; }
-            .form-container { padding: 25px; }
-        }
+        footer { text-align: center; padding: 20px; color: #888; font-size: 0.75rem; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1 style="margin:0"><span style="color:var(--jaune-thb)">STAR</span> MADAGASCAR</h1>
-        <small style="letter-spacing: 3px; color: #777; font-weight: bold; margin-top: 5px;">BON DE COMMANDE EN LIGNE</small>
-    </header>
+<header>
+    <h1 style="margin:0"><span style="color:var(--jaune-thb)">STAR</span> MADAGASCAR</h1>
+</header>
 
-    <main class="main-content">
-        <div class="form-container">
-            <h2 style="text-align: center; color: var(--noir-fond); margin-bottom: 30px; font-weight: 800;">Détails de la livraison</h2>
-            
-            <form action="#" method="POST">
-                <div class="step-title">1. Identité</div>
-                <div class="input-group">
-                    <label>Nom et Prénoms</label>
-                    <input type="text" name="nom" placeholder="Votre nom complet" required>
-                </div>
+<main class="main-content">
+    <div class="form-container">
+        <form action="#">
+            <div class="step-title">1. Informations Client</div>
+            <input type="text" placeholder="Nom complet" required>
+            <input type="tel" placeholder="Téléphone" required>
+            <textarea rows="2" placeholder="Adresse de livraison..." required></textarea>
 
-                <div class="input-group">
-                    <label>Téléphone (Contact direct)</label>
-                    <input type="tel" name="tel" placeholder="034 00 000 00" required>
-                </div>
+            <div class="step-title">2. Votre Commande</div>
+            <textarea rows="2" placeholder="Détails des produits..." required></textarea>
 
-                <div class="step-title">2. Destination</div>
-                <div class="input-group">
-                    <label>Adresse exacte</label>
-                    <textarea name="adresse" rows="3" placeholder="Lot, Quartier, Ville, Points de repère..." required></textarea>
-                </div>
+            <div class="step-title">3. Calcul (Frais : 5 000 Ar)</div>
+            <div class="resume-container">
+                <input type="number" class="total-input" placeholder="Total à payer (Ar)">
+            </div>
 
-                <div class="step-title">3. Votre Commande</div>
-                <div class="input-group">
-                    <label>Liste des produits</label>
-                    <textarea name="commande" rows="3" placeholder="Ex: 2 casiers THB, 1 carton Eau Vive..." required></textarea>
-                </div>
+            <div class="step-title">4. Mode de Paiement</div>
+            <div class="payment-methods">
+                <input type="radio" name="pay" id="mvola" checked>
+                <label for="mvola" class="method-button" style="border-bottom: 4px solid #00c853;">MVola</label>
 
-                <div class="resume-container">
-                    <div class="flex-row" style="margin-bottom: 15px;">
-                        <span style="color: #666;">Frais de livraison fixe :</span>
-                        <strong style="color: #333;">5 000 Ar</strong>
-                    </div>
-                    <div class="flex-row">
-                        <strong style="color: var(--noir-fond);">TOTAL À PAYER :</strong>
-                        <input type="text" name="total" class="input-total" placeholder="0 Ar">
-                    </div>
-                </div>
+                <input type="radio" name="pay" id="orange">
+                <label for="orange" class="method-button" style="border-bottom: 4px solid #ff6600;">Orange</label>
 
-                <div class="step-title">4. Paiement sécurisé</div>
-                <div class="payment-methods">
-                    <label class="method-card mvola">
-                        <input type="radio" name="pay" value="mvola" checked> <strong>MVola</strong>
-                    </label>
-                    <label class="method-card orange">
-                        <input type="radio" name="pay" value="orange"> <strong>Orange</strong>
-                    </label>
-                    <label class="method-card airtel">
-                        <input type="radio" name="pay" value="airtel"> <strong>Airtel</strong>
-                    </label>
-                    <label class="method-card carte">
-                        <input type="radio" name="pay" value="carte"> <strong>Carte</strong>
-                    </label>
-                </div>
+                <input type="radio" name="pay" id="airtel">
+                <label for="airtel" class="method-button" style="border-bottom: 4px solid #e11010;">Airtel</label>
+            </div>
 
-                <div class="input-group">
-                    <label>Référence de transaction</label>
-                    <input type="text" name="ref" placeholder="Entrez l'ID reçu par SMS" required>
-                </div>
+            <button type="submit" class="btn-envoyer">Confirmer l'envoi</button>
+            <div id="success-message">Envoyé avec succès ✅</div>
+        </form>
+    </div>
 
-                <button type="submit" class="btn-envoyer">Confirmer ma commande</button>
-            </form>
-        </div>
+    <div class="contact-cta">
+        <a href="contact.html" class="btn-contact">📞 CONTACTEZ-NOUS</a>
+    </div>
+</main>
 
-        <div class="contact-cta">
-            <p style="color: #888; font-size: 0.9rem; margin-bottom: 15px;">Une question sur votre commande ?</p>
-            <a href="contact.html" class="btn-contact">Voir Contact 📞</a>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Brasserie STAR Madagascar - Service Livraison à domicile</p>
-    </footer>
+<footer>
+    &copy; 2026 Brasserie STAR Madagascar
+</footer>
 
 </body>
 </html>
